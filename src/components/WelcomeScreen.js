@@ -40,7 +40,10 @@ const WelcomeScreen = () => {
     }, [])
 
     return (
-        <StyledApp className="container">
+        <StyledApp
+            className="container d-flex align-items-center justify-content-center"
+            style={{ height: '100vh' }}
+        >
             <div className="row">
                 <div className="col-md-12 text-center">
                     <StyledHeader>

@@ -5,11 +5,14 @@ import { Link } from 'react-router-dom'
 const PhonesList = () => {
     const phones = useSelector(state => state.phones)
     return (
-        <div className="container">
-            <div className="row">
+        <div
+            className="container d-flex align-items-center justify-content-center"
+            style={{ height: '100vh' }}
+        >
+            <div className="row ">
                 {phones.map((phone, index) => {
                     return (
-                        <div className="col-md-4" key={index}>
+                        <div className="col-md-4 my-2" key={index}>
                             <div className="img-thumbnail" key={index}>
                                 <div className="row">
                                     <div className="col-md-12">
