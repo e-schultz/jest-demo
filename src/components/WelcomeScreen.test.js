@@ -1,9 +1,16 @@
-import { render } from '@testing-library/react'
 import WelcomeScreen from './WelcomeScreen'
 
+import { renderWithStore } from '../utils/renderWithStore.utils'
+
+const initialState = {
+    phones: [],
+}
+
 describe('WelcomeScreen should render correctly', () => {
-    it.skip('should match snapshot', () => {
-        const { container } = render(<WelcomeScreen />)
+    it('should match snapshot', () => {
+        const { container } = renderWithStore(<WelcomeScreen />, {
+            initialState,
+        })
         expect(container.firstChild).toMatchSnapshot()
     })
 })

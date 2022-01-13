@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Spinner should render correctly should match snapshot 1`] = `
+<div
+  class="css-myp9de"
+>
+  Loading...
+</div>
+`;
