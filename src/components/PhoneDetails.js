@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import React from 'react'
+import { useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
 
 const renderPhone = (phone, index) => (
-    <div>
-        <div className="jumbotron justify-content-center d-flex" key={index}>
+    <div key={index}>
+        <div className="justify-content-center d-flex" key={index}>
             <div className="col-md-6">
                 <Link
                     to="/phones"
@@ -14,11 +14,7 @@ const renderPhone = (phone, index) => (
                 </Link>
                 <div className="img-thumbnail row">
                     <div className="col-md-4">
-                        <img
-                            src={phone.image}
-                            alt={phone.name}
-                            className="img-thumbnail"
-                        />
+                        <img src={phone.image} alt={phone.name} />
                     </div>
                     <div className="col-md-8">
                         <ul>
@@ -46,22 +42,13 @@ const renderPhone = (phone, index) => (
     </div>
 )
 
-const PhoneDetailComponent = ({ phones }) => {
+const PhoneDetails = () => {
     const params = useParams()
-    return (
-        <div>
-            <div className="row">
-                {phones.map((phone, index) =>
-                    index === Number(params.id) ? renderPhone(phone, index) : ''
-                )}
-            </div>
-        </div>
+    const phones = useSelector(state => state.phones)
+    return phones.map(
+        (phone, index) =>
+            index === Number(params.id) && renderPhone(phone, index)
     )
 }
 
-const mapStateToProps = state => {
-    console.log('StateToProps', state)
-    return { phones: state.phones }
-}
-
-export default connect(mapStateToProps)(PhoneDetailComponent)
+export default PhoneDetails
