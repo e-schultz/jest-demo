@@ -5,7 +5,7 @@ import axios from 'axios'
 import styled from '@emotion/styled'
 
 import * as actionTypes from '../store/actions'
-import Spinner from './Spinner'
+import Spinner from './UI/Spinner'
 
 const StyledApp = styled.div`
     text-align: center;
@@ -51,33 +51,24 @@ const WelcomeScreen = () => {
                     </StyledHeader>
                 </div>
                 <div className="col-md-12 text-center">
-                    <Link
-                        onClick={() =>
-                            dispatch({
-                                type: actionTypes.ADD_PHONES,
-                                payload: fetchedPhones,
-                            })
-                        }
-                        to="/phones"
-                        className="btn btn-primary"
-                        style={
-                            loading
-                                ? {
-                                      pointerEvents: 'none',
-                                      cursor: 'not-allowed',
-                                      opacity: '0.2',
-                                  }
-                                : {
-                                      pointerEvents: 'all',
-                                      cursor: 'pointer',
-                                      opacity: '1',
-                                  }
-                        }
-                    >
-                        Go to catalog
-                    </Link>
+                    {loading ? (
+                        <Spinner />
+                    ) : (
+                        <Link
+                            onClick={() =>
+                                dispatch({
+                                    type: actionTypes.ADD_PHONES,
+                                    payload: fetchedPhones,
+                                })
+                            }
+                            to="/phones"
+                            className="btn btn-primary"
+                            disabled={loading}
+                        >
+                            Go to catalog
+                        </Link>
+                    )}
                 </div>
-                {loading && <Spinner />}
             </div>
         </StyledApp>
     )
