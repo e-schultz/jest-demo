@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`WelcomeScreen should render correctly should match snapshot 1`] = `
+<div
+  class="container d-flex align-items-center justify-content-center css-18ul79m"
+  style="height: 100vh;"
+>
+  <div
+    class="row"
+  >
+    <div
+      class="col-md-12 text-center"
+    >
+      <div
+        class="css-cp5izk"
+      >
+        <h1
+          class="css-12yjyrl"
+        >
+          Welcome to Phone Catalog
+        </h1>
+      </div>
+    </div>
+    <div
+      class="col-md-12 text-center"
+    >
+      <div
+        class="css-myp9de"
+      >
+        Loading...
+      </div>
+    </div>
+  </div>
+</div>
+`;
