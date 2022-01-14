@@ -1,6 +1,6 @@
 import WelcomeScreen from './WelcomeScreen'
 
-import { renderWithStore } from '../utils/renderWithStore.utils'
+import { renderHelper } from '../utils/renderHelper.utils'
 
 const initialState = {
     phones: [],
@@ -8,7 +8,7 @@ const initialState = {
 
 describe('WelcomeScreen should render correctly', () => {
     it('should match snapshot', () => {
-        const { container } = renderWithStore(<WelcomeScreen />, {
+        const { container } = renderHelper(<WelcomeScreen />, {
             initialState,
         })
         expect(container.firstChild).toMatchSnapshot()
