@@ -34,9 +34,7 @@ const WelcomeScreen = () => {
                 setFetchedPhones(response.data.phones)
                 setLoading(false)
             })
-            .catch(error => {
-                console.log(error)
-            })
+            .catch(() => {})
     }, [])
 
     return (
