@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 class PhoneListContainer extends Component {
   render() {
     const phones = this.props.phones;
-    console.log("phones", this.props.phones);
+
     return (
       <div className="container">
         <div className="row">
