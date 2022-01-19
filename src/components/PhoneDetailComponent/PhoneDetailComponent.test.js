@@ -1,8 +1,8 @@
 import React from 'react';
-import {render as testRender, screen} from '@testing-library/react';
+import {render as rtlRender, screen} from '@testing-library/react';
 import PhoneDetailComponent from './PhoneDetailComponent';
 const render = (ui) => {
-    return testRender(ui);
+    return rtlRender(ui);
 }
 describe('magic',()=>{
     it('should work',()=>{
