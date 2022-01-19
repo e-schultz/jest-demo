@@ -29,7 +29,6 @@ const PhoneDetailComponent = ({ phones }) => {
 };
 
 const mapStateToProps = (state) => {
-  console.log("StateToProps", state);
   return { phones: state.phones };
 };
 

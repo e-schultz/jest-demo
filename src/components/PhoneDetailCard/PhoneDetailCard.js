@@ -1,6 +1,11 @@
 import React from "react";
 
-function PhoneDetailCard({ phone }) {
+function PhoneDetailCard({ phone, locale = "en-US", currency = "USD" }) {
+  const price = phone.price.toLocaleString(locale, {
+    style: "currency",
+    currency,
+  });
+
   return (
     <div className="img-thumbnail row" data-testid={`phone-id-${phone.id}`}>
       <div className="col-md-4">
@@ -18,7 +23,7 @@ function PhoneDetailCard({ phone }) {
         </ul>
       </div>
       <div className="caption col-md-12">
-        <h4 className="justify-content-end d-flex">$ {phone.price}</h4>
+        <h4 className="justify-content-end d-flex">{price}</h4>
         <h4>{phone.name}</h4>
       </div>
       <div>
