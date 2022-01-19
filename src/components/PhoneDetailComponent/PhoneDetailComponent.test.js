@@ -13,22 +13,26 @@ const render = (
   {
     initialState,
     store = createStore(reducer, initialState),
+    initialEntries = ["/phones/1"],
     ...renderOptions
   } = {}
 ) => {
   const Wrapper = ({ children }) => {
-    return <Provider store={store}>{children}</Provider>;
+    return (
+      <Provider store={store}>
+        <MemoryRouter initialEntries={initialEntries}>
+          <Routes>{children}</Routes>
+        </MemoryRouter>
+      </Provider>
+    );
   };
   return rtlRender(ui, { wrapper: Wrapper, ...renderOptions });
 };
-describe("magic", () => {
+
+describe("rendering a phone detail component", () => {
   it("should work", () => {
     const comp = render(
-      <MemoryRouter initialEntries={["/phones/1"]}>
-        <Routes>
-          <Route path="/phones/:id" element={<PhoneDetailComponent />}></Route>
-        </Routes>
-      </MemoryRouter>
+      <Route path="/phones/:id" element={<PhoneDetailComponent />}></Route>
     );
     comp.getByTestId("phone-id-1");
     comp.getByText("Apple iPhone 5c");
