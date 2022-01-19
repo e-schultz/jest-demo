@@ -80,7 +80,7 @@ const Phones = [
     memory: "16GB, 32GB and RAM 1 GB",
   },
   {
-    id: "6",
+    id: "123",
     categoryId: "2",
     name: "Samsung Galaxy S6",
     description:
