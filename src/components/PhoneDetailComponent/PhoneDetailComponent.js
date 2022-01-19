@@ -3,15 +3,9 @@ import { connect } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 
 const renderPhone = (phone, index) => (
-  <div>
+  <div></div>
     <div className="jumbotron justify-content-center d-flex" key={index}>
       <div className="col-md-6">
-        <Link
-          to="/phones"
-          className="btn btn-succes d-flex justify-content-center"
-        >
-          Back to catalog
-        </Link>
         <div className="img-thumbnail row" data-testid={`phone-idx-${index}`}>
           <div className="col-md-4">
             <img src={phone.image} alt={phone.name} className="img-thumbnail" />
