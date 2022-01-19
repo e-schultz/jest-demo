@@ -36,6 +36,7 @@ describe("rendering a phone detail component", () => {
     );
     comp.getByTestId("phone-id-1");
     comp.getByText("Apple iPhone 5c");
+    comp.getByText("$823.00");
   });
 });
 
