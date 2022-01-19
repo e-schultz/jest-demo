@@ -39,7 +39,6 @@ class PhoneListContainer extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log("StateToProps", state);
   return { phones: state.phones };
 };
 
