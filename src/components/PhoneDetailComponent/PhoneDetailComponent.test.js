@@ -1,9 +1,9 @@
 import React from "react";
 import { render as rtlRender, screen, prettyDOM } from "@testing-library/react";
-import { createMemoryHistory } from "history";
+import { Route, MemoryRouter, Routes } from "react-router-dom";
+
 import { createStore } from "redux";
 import { Provider } from "react-redux";
-import { Router, Route } from "react-router-dom";
 // Import our reducer
 import reducer from "../../store/reducer"; // to access rest of reducers
 import PhoneDetailComponent from "./PhoneDetailComponent";
@@ -11,8 +11,6 @@ import PhoneDetailComponent from "./PhoneDetailComponent";
 const render = (
   ui,
   {
-    route = "/",
-    history = createMemoryHistory({ initialEntries: [route] }),
     initialState,
     store = createStore(reducer, initialState),
     ...renderOptions
@@ -21,24 +19,21 @@ const render = (
   const Wrapper = ({ children }) => {
     return <Provider store={store}>{children}</Provider>;
   };
-  return rtlRender(
-    <Router history={history}>
-      <Route path={route}>{ui}</Route>
-    </Router>,
-    { wrapper: Wrapper, ...renderOptions, history }
-  );
+  return rtlRender(ui, { wrapper: Wrapper, ...renderOptions });
 };
 describe("magic", () => {
   it("should work", () => {
     const comp = render(
-      <Route path="/phones/:id">
-        <PhoneDetailComponent />
-      </Route>,
-      {
-        route: "/phones/1",
-      }
+      <MemoryRouter initialEntries={["/phones/1"]}>
+        <Routes>
+          <Route path="/phones/:id" element={<PhoneDetailComponent />}></Route>
+        </Routes>
+      </MemoryRouter>
     );
-    const phone1 = comp.getByTestId("phone-idx-1");
-    screen.getByTestId("phone-idx-1");
+    comp.getByTestId("phone-id-1");
+    comp.getByText("Apple iPhone 5c");
   });
 });
+
+// https://stackoverflow.com/questions/58117890/how-to-test-components-using-new-react-router-hooks
+// https://stackoverflow.com/questions/58117890/how-to-test-components-using-new-react-router-hooks/58206121#58206121
