@@ -9,6 +9,7 @@ const renderPhone = (phone, props) => (
         <Link
           to="/phones"
           className="btn btn-succes d-flex justify-content-center"
+          data-testid="back-to-phones"
         >
           Back to catalog
         </Link>
@@ -20,6 +21,7 @@ const renderPhone = (phone, props) => (
 
 const PhoneDetailComponent = ({ phones, ...props }) => {
   const params = useParams();
+  console.log("parms", params);
   const phone = phones.find((phone) => Number(phone.id) === Number(params.id));
   return (
     <div>

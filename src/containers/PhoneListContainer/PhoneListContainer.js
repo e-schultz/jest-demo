@@ -8,6 +8,7 @@ class PhoneListContainer extends Component {
 
     return (
       <div className="container">
+        <div className="row">All Phones</div>
         <div className="row">
           {phones.map((phone, index) => {
             return (
@@ -24,7 +25,11 @@ class PhoneListContainer extends Component {
                     </h4>
                     <h4>{phone.name}</h4>
                     <p className="text-left">{phone.description}</p>
-                    <Link to={`/phones/${phone.id}`} className="btn btn-info">
+                    <Link
+                      to={`/phones/${phone.id}`}
+                      className="btn btn-info"
+                      data-testid={`btn-phone-details-${phone.id}`}
+                    >
                       More...
                     </Link>
                   </div>
