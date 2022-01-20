@@ -30,13 +30,27 @@ const render = (
 };
 
 describe("rendering a phone detail component", () => {
-  it("should work", () => {
+  let phone;
+
+  it("should display the price with default us formatting", () => {
     const comp = render(
       <Route path="/phones/:id" element={<PhoneDetailComponent />}></Route>
     );
     comp.getByTestId("phone-id-1");
     comp.getByText("Apple iPhone 5c");
     comp.getByText("$823.00");
+  });
+
+  it("should display the price with default the provided locale and currency", () => {
+    const comp = render(
+      <Route
+        path="/phones/:id"
+        element={<PhoneDetailComponent locale="de-DE" currency="EUR" />}
+      ></Route>
+    );
+    comp.getByTestId("phone-id-1");
+    comp.getByText("Apple iPhone 5c");
+    comp.getByText("823,00 €");
   });
 });
 

@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import PhoneDetailCard from "../PhoneDetailCard/PhoneDetailCard";
-const renderPhone = (phone, index) => (
-  <div key={index}>
+const renderPhone = (phone, props) => (
+  <div key={phone.id}>
     <div className="jumbotron justify-content-center d-flex">
       <div className="col-md-6">
         <Link
@@ -12,18 +12,18 @@ const renderPhone = (phone, index) => (
         >
           Back to catalog
         </Link>
-        <PhoneDetailCard phone={phone} />
+        <PhoneDetailCard phone={phone} {...props} />
       </div>
     </div>
   </div>
 );
 
-const PhoneDetailComponent = ({ phones }) => {
+const PhoneDetailComponent = ({ phones, ...props }) => {
   const params = useParams();
   const phone = phones.find((phone) => Number(phone.id) === Number(params.id));
   return (
     <div>
-      <div className="row">{phone ? renderPhone(phone) : null}</div>
+      <div className="row">{phone ? renderPhone(phone, props) : null}</div>
     </div>
   );
 };
